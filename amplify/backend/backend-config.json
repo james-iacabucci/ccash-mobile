@@ -1,0 +1,14 @@
+{
+	"auth": {
+		"cognito54f68692": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"analytics": {
+		"ccashmobile": {
+			"service": "Pinpoint",
+			"providerPlugin": "awscloudformation"
+		}
+	}
+}

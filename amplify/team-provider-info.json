@@ -1,0 +1,19 @@
+{
+    "ccash": {
+        "awscloudformation": {
+            "AuthRoleName": "ccash-mobile-20190427193040-authRole",
+            "UnauthRoleArn": "arn:aws:iam::218694734074:role/ccash-mobile-20190427193040-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::218694734074:role/ccash-mobile-20190427193040-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "ccash-mobile-20190427193040-deployment",
+            "UnauthRoleName": "ccash-mobile-20190427193040-unauthRole",
+            "StackName": "ccash-mobile-20190427193040",
+            "StackId": "arn:aws:cloudformation:us-west-2:218694734074:stack/ccash-mobile-20190427193040/9efc7150-695d-11e9-b07b-06be1aa8968e"
+        },
+        "categories": {
+            "auth": {
+                "cognito54f68692": {}
+            }
+        }
+    }
+}

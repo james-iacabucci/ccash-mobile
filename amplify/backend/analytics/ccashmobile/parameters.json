@@ -1,0 +1,20 @@
+{
+    "appName": "ccashmobile",
+    "roleName": "pinpointLambdaRole9bed3510",
+    "cloudWatchPolicyName": "cloudWatchPolicy9bed3510",
+    "pinpointPolicyName": "pinpointPolicy9bed3510",
+    "authPolicyName": "pinpoint_amplify_9bed3510",
+    "unauthPolicyName": "pinpoint_amplify_9bed3510",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}
