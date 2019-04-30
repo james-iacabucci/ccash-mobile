@@ -10,28 +10,28 @@ export default class LinksScreen extends React.Component {
   render() {
 
     return (
-    <>
-      <ScrollView
-        style={[styles.container]}
-        contentContainerStyle={styles.content}
-      >
-        <Card style={[styles.surface]}>
-          <Text style={{color: 'white'}}>THIS IS A TRANSACTION CARD</Text>
-        </Card>
+      <>
+        <ScrollView
+          style={[styles.container]}
+          contentContainerStyle={styles.content}
+        >
+          <Card style={[styles.surface]}>
+            <Text style={{ color: 'white' }}>THIS IS A TRANSACTION CARD</Text>
+          </Card>
 
-        <Card style={[styles.surface]}>
-          <Text style={{color: 'white'}}>THIS IS A TRANSACTION CARD</Text>
-        </Card>
+          <Card style={[styles.surface]}>
+            <Text style={{ color: 'white' }}>THIS IS A TRANSACTION CARD</Text>
+          </Card>
 
-        <Card style={[styles.surface]}>
-          <Text style={{color: 'white'}}>THIS IS A TRANSACTION CARD</Text>
-        </Card>
+          <Card style={[styles.surface]}>
+            <Text style={{ color: 'white' }}>THIS IS A TRANSACTION CARD</Text>
+          </Card>
 
-        <Card style={[styles.surface]}>
-          <Text style={{color: 'white'}}>THIS IS A TRANSACTION CARD</Text>
-        </Card>        
-      </ScrollView>
-    </>
+          <Card style={[styles.surface]}>
+            <Text style={{ color: 'white' }}>THIS IS A TRANSACTION CARD</Text>
+          </Card>
+        </ScrollView>
+      </>
     );
   }
 }
@@ -39,7 +39,6 @@ export default class LinksScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#39cd28',
   },
 
   content: {

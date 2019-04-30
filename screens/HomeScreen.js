@@ -15,30 +15,33 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
 
-      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          
+      <View style={styles.container}>
 
+        <Card style={[styles.surface]}>
+          <Text style={{ color: 'white' }}>CCASH BALANCE</Text>
+        </Card>
 
-        </ScrollView>
+      </View>
 
 
 
 
     );
   }
-
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  contentContainer: {
-    paddingTop: 10,
-  },
-  welcomeContainer: {
+  surface: {
+    margin: 16,
+    padding: 12,
+    height: 140,
+    width: '80%',
+    elevation: 4,
     alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
+    justifyContent: 'center',
+    backgroundColor: '#c2ae75',
   },
 });

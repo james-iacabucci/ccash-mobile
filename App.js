@@ -6,7 +6,7 @@ import { Auth, Analytics } from 'aws-amplify';
 import { withAuthenticator, AmplifyTheme } from 'aws-amplify-react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { DefaultTheme as PaperTheme } from 'react-native-paper';
-import {type Theme, lightBlue500, grey800, redA400, white, black, pinkA100 } from 'react-native-paper';
+import { type Theme, lightBlue500, grey200, redA400, white, black, pinkA100 } from 'react-native-paper';
 import { Surface, Appbar, Text, Card, BottomNavigation } from 'react-native-paper';
 import color from 'color';
 
@@ -26,7 +26,7 @@ class App extends React.Component {
     routes: [
       { key: 'wallet', title: 'Wallet', icon: 'attach-money' },
       { key: 'payments', title: 'Payments', icon: 'verified-user' },
-      { key: 'contacts', title: 'Contacts', icon: 'group'},
+      { key: 'contacts', title: 'Contacts', icon: 'group' },
     ],
   };
 
@@ -41,8 +41,8 @@ class App extends React.Component {
   handleSignOut = () => {
     console.log('signing out');
     Auth.signOut()
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
   };
 
   handleMoreMenu = () => {
@@ -62,23 +62,23 @@ class App extends React.Component {
       return (
         <PaperProvider theme={customPaperTheme}>
           <Appbar.Header>
-            <Appbar.Action disabled={false} icon="more-vert" onPress={this.handleMoreMenu}/>
-            <Appbar.Content title="CompliantCash" subtitle="Powered by CannCo"/>
-            <Appbar.Action disabled={false} icon="person" onPress={this.handleSignOut}/>
+            <Appbar.Action disabled={false} icon="more-vert" onPress={this.handleMoreMenu} />
+            <Appbar.Content title="CompliantCash" subtitle="Powered by CannCo" />
+            <Appbar.Action disabled={false} icon="person" onPress={this.handleSignOut} />
           </Appbar.Header>
-  
+
           <BottomNavigation
             navigationState={this.state}
             onIndexChange={this._handleIndexChange}
             renderScene={this._renderScene}
           />
-                    
-{/* 
+
+          {/* 
           <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
             <AppNavigator />
           </View> */}
-   
+
         </PaperProvider>
 
       );
@@ -112,41 +112,20 @@ class App extends React.Component {
   };
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-const authTheme = {
-  ...AmplifyTheme,
-  button: {
-    ...AmplifyTheme.button,
-    backgroundColor: '#39cd28'
-  }, 
-  buttonDisabled : {
-    ...AmplifyTheme.buttonDisabled,
-    backgroundColor: '#95a5a6'
-  },
-  signInButton: {
-    ...AmplifyTheme.signInButton,
-    amazon_signin_btn: {
-      backgroundColor: '#39cd28',
-      borderColor: '#39cd28'
-    }
-  },
-}
-
 const customPaperTheme = {
   ...PaperTheme,
   colors: {
     ...PaperTheme.colors,
-    primary: '#0ab134',
-    background: '#0ab134',
-    accent: '#39cd28',
+    primary: '#c2ae75', //'#0ab134',
+    accent: 'red',
+    background: '#424649',
+    surface: grey200,
+    text: white,
   },
   appbar: {
-    elevation: 6,
+    ...PaperTheme.appbar,
+    elevation: 12,
+    text: white,
   }
 
 }
@@ -173,5 +152,30 @@ const customPaperTheme = {
       .string(),
     notification: pinkA100,
  */
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+const authTheme = {
+  ...AmplifyTheme,
+  button: {
+    ...AmplifyTheme.button,
+    backgroundColor: '#39cd28'
+  },
+  buttonDisabled: {
+    ...AmplifyTheme.buttonDisabled,
+    backgroundColor: '#95a5a6'
+  },
+  signInButton: {
+    ...AmplifyTheme.signInButton,
+    amazon_signin_btn: {
+      backgroundColor: '#39cd28',
+      borderColor: '#39cd28'
+    }
+  },
+}
 
 export default withAuthenticator(App, false, [], null, authTheme);
