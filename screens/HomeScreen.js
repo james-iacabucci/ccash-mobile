@@ -5,21 +5,25 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Surface, Card, Title, Paragraph, Content, Button } from 'react-native-paper';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    header: null,
+    header: true,
   };
 
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Text style={{ color: 'white' }}>WALLET</Text>
-          </View>
+
+      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+          
+
+
         </ScrollView>
-      </View>
+
+
+
+
     );
   }
 
@@ -28,10 +32,9 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0ab134'
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 10,
   },
   welcomeContainer: {
     alignItems: 'center',

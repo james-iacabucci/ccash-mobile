@@ -1,12 +1,14 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, StatusBar, Platform, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import { Auth, Analytics } from 'aws-amplify';
 import { withAuthenticator, AmplifyTheme } from 'aws-amplify-react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { DefaultTheme as PaperTheme } from 'react-native-paper';
-import { Appbar, BottomNavigation } from 'react-native-paper';
+import {type Theme, lightBlue500, grey800, redA400, white, black, pinkA100 } from 'react-native-paper';
+import { Surface, Appbar, Text, Card, BottomNavigation } from 'react-native-paper';
+import color from 'color';
 
 import HomeScreen from './screens/HomeScreen';
 import LinksScreen from './screens/LinksScreen';
@@ -22,9 +24,9 @@ class App extends React.Component {
     isLoadingComplete: false,
     index: 0,
     routes: [
-      { key: 'wallet', title: 'Wallet', icon: 'queue-music' },
-      { key: 'payments', title: 'Payments', icon: 'history' },
-      { key: 'contacts', title: 'Contacts', icon: 'group' },
+      { key: 'wallet', title: 'Wallet', icon: 'attach-money' },
+      { key: 'payments', title: 'Payments', icon: 'verified-user' },
+      { key: 'contacts', title: 'Contacts', icon: 'group'},
     ],
   };
 
@@ -35,6 +37,17 @@ class App extends React.Component {
     payments: LinksScreen,
     contacts: SettingsScreen,
   });
+
+  handleSignOut = () => {
+    console.log('signing out');
+    Auth.signOut()
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+  };
+
+  handleMoreMenu = () => {
+
+  }
 
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
@@ -48,26 +61,26 @@ class App extends React.Component {
     } else {
       return (
         <PaperProvider theme={customPaperTheme}>
-
-          <Appbar.Header >
-            <Appbar.Content
-              title="Compliant Cash"
-              subtitle="Powered by CannCo"
-            />
-            <Appbar.Action icon="search" />
-            <Appbar.Action icon="person" />
+          <Appbar.Header>
+            <Appbar.Action disabled={false} icon="more-vert" onPress={this.handleMoreMenu}/>
+            <Appbar.Content title="CompliantCash" subtitle="Powered by CannCo"/>
+            <Appbar.Action disabled={false} icon="person" onPress={this.handleSignOut}/>
           </Appbar.Header>
+  
           <BottomNavigation
             navigationState={this.state}
             onIndexChange={this._handleIndexChange}
             renderScene={this._renderScene}
           />
-          {/*   <View style={styles.container}>
+                    
+{/* 
+          <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
             <AppNavigator />
-          </View>
- */}
+          </View> */}
+   
         </PaperProvider>
+
       );
     }
   }
@@ -110,17 +123,55 @@ const authTheme = {
   button: {
     ...AmplifyTheme.button,
     backgroundColor: '#39cd28'
-  }
+  }, 
+  buttonDisabled : {
+    ...AmplifyTheme.buttonDisabled,
+    backgroundColor: '#95a5a6'
+  },
+  signInButton: {
+    ...AmplifyTheme.signInButton,
+    amazon_signin_btn: {
+      backgroundColor: '#39cd28',
+      borderColor: '#39cd28'
+    }
+  },
 }
 
 const customPaperTheme = {
   ...PaperTheme,
-  dark: 'true',
   colors: {
     ...PaperTheme.colors,
     primary: '#0ab134',
-    accent: '#39cd28'
+    background: '#0ab134',
+    accent: '#39cd28',
+  },
+  appbar: {
+    elevation: 6,
   }
+
 }
+
+/* 
+  colors: {
+    ...PaperTheme.colors,
+    primary: lightBlue500,
+    background: '#242424',
+    surface: grey800,
+    error: redA400,
+    text: white,
+    disabled: color(white)
+      .alpha(0.3)
+      .rgb()
+      .string(),
+    placeholder: color(white)
+      .alpha(0.54)
+      .rgb()
+      .string(),
+    backdrop: color(black)
+      .alpha(0.5)
+      .rgb()
+      .string(),
+    notification: pinkA100,
+ */
 
 export default withAuthenticator(App, false, [], null, authTheme);
